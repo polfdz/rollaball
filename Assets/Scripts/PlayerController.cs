@@ -99,6 +99,10 @@ public class PlayerController : MonoBehaviour
                 collider.gameObject.SetActive(false);
                 randomObjects.desactivateWind();
                 break;
+            case "Box Ground":
+                collider.gameObject.SetActive(false);
+                randomObjects.resizeGround(0);
+                break;
         }
     }
 

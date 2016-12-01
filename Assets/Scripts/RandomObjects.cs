@@ -8,6 +8,8 @@ public class RandomObjects : MonoBehaviour
     public GameObject pickUpToPlace; // GameObject to place
     public GameObject boxTimeToPlace; // GameObject to place
     public GameObject boxWindToPlace;
+    public GameObject groundBoxToPlace;
+
     public WindZone windW, windE, windN, windS;
 
 
@@ -24,24 +26,12 @@ public class RandomObjects : MonoBehaviour
     private int terrainLength; // terrain size (z)
     private int terrainPosX; // terrain position x
     private int terrainPosZ; // terrain position z
-
+    private float scaleX = 2.0f;
+    private float scaleZ = 2.0f;
     void Start()
     {
-
-        //Boxes
-        var renderer = ground.GetComponent<Renderer>();
-        // terrain size x
-        terrainWidth = (int)renderer.bounds.size.x - 1;
-        // terrain size z
-        terrainLength = (int)renderer.bounds.size.z - 1;
-        // terrain x position
-        terrainPosX = (int)ground.transform.position.x;
-        // terrain z position
-        terrainPosZ = (int)ground.transform.position.z;
-        Debug.Log("PosX "+terrainPosX);
-        Debug.Log("PosZ " + terrainPosZ);
-        Debug.Log("Width " + terrainWidth);
-        Debug.Log("Height " + terrainLength);
+        //Ground size parametes
+        updateGroundParams();
 
         //Desactivate windZones
         desactivateWind();
@@ -50,6 +40,8 @@ public class RandomObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //make ground small randomly
+        resizeGround(1);
 
         // create new gameObject on random position
         if (currentPickUp < numberOfPickUp)
@@ -67,6 +59,7 @@ public class RandomObjects : MonoBehaviour
 
         //generate random winds
         generateRandomWind();
+
 
     }
 
@@ -151,5 +144,46 @@ public class RandomObjects : MonoBehaviour
             return windS.gameObject;
         }
         return null;
+    }
+
+    //ground resize
+    public void resizeGround(int i) {    
+        //big
+        switch (i)
+        {
+            case 0:
+                scaleX += 0.2f;
+                scaleZ += 0.2f;
+                ground.transform.localScale = new Vector3(scaleX, 1.0f, scaleZ);
+                break;
+            case 1:
+                int rand = Random.Range(0, 10000);
+                if (rand <= 10)
+                {
+                    scaleX -= 0.1f;
+                    scaleZ -= 0.1f;
+                    ground.transform.localScale = new Vector3(scaleX, 1.0f, scaleZ);
+                    generateGroundBox();
+                }
+                break;
+        }
+        updateGroundParams();      
+    }
+    void generateGroundBox()
+    {
+        Vector3 randoms = getRandomPositions();
+        generateObject(groundBoxToPlace, randoms);
+    }
+    void updateGroundParams() {
+        //Boxes
+        var renderer = ground.GetComponent<Renderer>();
+        // terrain size x
+        terrainWidth = (int)renderer.bounds.size.x - 1;
+        // terrain size z
+        terrainLength = (int)renderer.bounds.size.z - 1;
+        // terrain x position
+        terrainPosX = (int)ground.transform.position.x;
+        // terrain z position
+        terrainPosZ = (int)ground.transform.position.z;
     }
 }
