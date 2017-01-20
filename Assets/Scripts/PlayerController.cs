@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	public AudioClip plusObjectSound;
 	public AudioClip windSound;
 	public AudioClip rampSound;
+	public AudioClip wallsSound;
 	public AudioClip gameOverSound;
 
 	//Timers
@@ -119,9 +120,10 @@ public class PlayerController : MonoBehaviour
                 SetCountText();
 				audioSrcMain.PlayOneShot(coinObjectSound);
                 break;
-            case "Wall":
+			case "Wall":
                 //Move wall
-                collider.transform.Translate(0.0f, -0.3f, 0.0f);
+				collider.transform.Translate (0.0f, -0.3f, 0.0f);
+				audioSrcMain.PlayOneShot (wallsSound);
                 break;
             case "Box Time":
                 randomObjects.currentTimeBoxes--;
@@ -139,12 +141,14 @@ public class PlayerController : MonoBehaviour
                 randomObjects.resizeGround(0);
 				audioSrcMain.PlayOneShot(plusObjectSound);            
 			break;
-            case "Ramp":
-                Debug.Log("RAMP");
-                rb.AddForce(movement * speed * 50);
+			case "Ramp":
+				Debug.Log ("RAMP");
+				rb.AddForce (movement * speed * 50);
+				// play ramp sound when ball is y > 1 to ensure it is not just colliding with ramp
+				if (rb.position.y > 1) {
+					audioSrcMain.PlayOneShot(rampSound);
+				}				            
                 break;
-
-
         }
     }
 	 
