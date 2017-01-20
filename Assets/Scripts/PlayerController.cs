@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour
                 winText.text = "Time is over...";
                 timerText.text = "--";
                 break;
+                
         }
         //Stop app
         Time.timeScale = 0;
