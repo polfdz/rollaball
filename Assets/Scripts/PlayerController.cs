@@ -127,15 +127,18 @@ public class PlayerController : MonoBehaviour
                 randomObjects.currentTimeBoxes--;
                 collider.gameObject.SetActive(false);
                 colorTimer += 4;
+				audioSrcMain.PlayOneShot(timeObjectSound);
                 break;
             case "Box Wind":
                 collider.gameObject.SetActive(false);
                 randomObjects.desactivateWind();
+				audioSrcMain.PlayOneShot(windObjectSound);
                 break;
             case "Box Ground":
                 collider.gameObject.SetActive(false);
                 randomObjects.resizeGround(0);
-                break;
+				audioSrcMain.PlayOneShot(plusObjectSound);            
+			break;
             case "Ramp":
                 Debug.Log("RAMP");
                 rb.AddForce(movement * speed * 50);
@@ -223,12 +226,8 @@ public class PlayerController : MonoBehaviour
     }
 
 	void playWindSound() {
-		bool windPlays = false;
-	//	float currentTime = Time.timeSinceLevelLoad;
-		//windSound.length;
-		if (!windPlays) {
+		if (!audioSrcWind.isPlaying) {
 			audioSrcWind.PlayOneShot(windSound);		
-			windPlays = true;
 		}
 	}
 
@@ -255,18 +254,18 @@ public class PlayerController : MonoBehaviour
                 
         }
         StoreHighscore(count);
-		if (isGameOver == false) {
-			audioSrcMain.Stop ();
-			audioSrcMain.PlayOneShot(gameOverSound);
-		}
-		isGameOver = true;
 
+		isGameOver = true;
+		//if (isGameOver) {
+			audioSrcMain.Stop ();
+			audioSrcWind.Stop ();
+			audioSrcMain.PlayOneShot(gameOverSound);
+		//}
         //Stop app
         Time.timeScale = 0;
     }
 
     void StoreHighscore(int newHighscore) {
-
         int oldHighscore = PlayerPrefs.GetInt("highscore", 0);
         if (newHighscore > oldHighscore) {
             PlayerPrefs.SetInt("highscore", newHighscore);
