@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject ramp1, ramp2;
     //Objects
     private Rigidbody rb; //the ball -- private not shown in Unity editor
     public Text countText, winText, timerText; //if public can be access in Unity editor
@@ -20,10 +21,13 @@ public class PlayerController : MonoBehaviour
     public float speed, windSpeed; //public will be shown in Unity editor
     public float boxSpeed;
 
+
+    Vector3 movement;
     // Use this for initialization
     void Start()
     {
-        
+        //ramp1.SetActive(false);
+
         //start game
         Time.timeScale = 1;
         rb = GetComponent<Rigidbody>(); //gets ball components
@@ -47,6 +51,9 @@ public class PlayerController : MonoBehaviour
         //Wind force if is active
         applyWind(2);
 
+        //ramps
+        checkRamp();
+
     }
 
     //Before performing any physics calculation
@@ -61,7 +68,7 @@ public class PlayerController : MonoBehaviour
             float y = 0.0f;
             float z = moveVeritcal;
 
-            Vector3 movement = new Vector3(x, y, z);
+            movement = new Vector3(x, y, z);
             rb.AddForce(movement * speed);
 
         }
@@ -69,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
             float moveHorizontal = Input.acceleration.x;
             float moveVertical = Input.acceleration.y;
-            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
             rb.AddForce(movement * speed * 3);
         }
@@ -103,9 +110,15 @@ public class PlayerController : MonoBehaviour
                 collider.gameObject.SetActive(false);
                 randomObjects.resizeGround(0);
                 break;
+            case "Ramp":
+                Debug.Log("RAMP");
+                rb.AddForce(movement * speed * 50);
+                break;
+
+
         }
     }
-
+	 
     /*
      * Coins counting text
      * 
@@ -136,7 +149,15 @@ public class PlayerController : MonoBehaviour
             GameOver(1);
         }
     }
+    //Ramps behavior
+    void checkRamp()
+    {
+        if(count > 4)
+        {
+            ramp1.SetActive(true);
+        }
 
+    }
     /*
      * Adds force to the ball 
      * factor - determines strength of the force
@@ -177,8 +198,6 @@ public class PlayerController : MonoBehaviour
      * 0 ball out of the terrain
      * 1 Timer expired
      * 2
-     * 
-     * 
      */
     void GameOver(int type)
     {
