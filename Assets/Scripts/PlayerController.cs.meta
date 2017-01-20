@@ -1,10 +1,24 @@
 fileFormatVersion: 2
 guid: 90d94bd178981ae4bbfac076ea7a93c3
-timeCreated: 1478529769
+timeCreated: 1484937074
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ramp1: {instanceID: 0}
+  - ramp2: {instanceID: 0}
+  - countText: {instanceID: 0}
+  - winText: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  - highscoreText: {instanceID: 0}
+  - randomObjects: {instanceID: 0}
+  - audioSrc: {instanceID: 0}
+  - coinObjectSound: {fileID: 8300000, guid: d0533b804aeec40d0bab3f3c1b39015e, type: 3}
+  - timeObjectSound: {instanceID: 0}
+  - windObjectSound: {instanceID: 0}
+  - plusObjectSound: {instanceID: 0}
+  - windSound: {instanceID: 0}
+  - rampSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
