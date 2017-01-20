@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public GameObject ramp1, ramp2;
     //Objects
     private Rigidbody rb; //the ball -- private not shown in Unity editor
-    public Text countText, winText, timerText; //if public can be access in Unity editor
+    public Text countText, winText, timerText, highscoreText; //if public can be access in Unity editor
 
     //Other classes for attributes access 
     public RandomObjects randomObjects;
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winText.text = "";
         timerText.text = "";
+        highscoreText.text = "Highscore: " + PlayerPrefs.GetInt("highscore", 0);
     }
 
     // Update is called once per frame
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
      * 
      */
     void SetCountText() {
-        countText.text = "Count: " + count.ToString();
+        countText.text = "Score: " + count.ToString();
        /* if (count >= 10) {
             winText.text = "You Win!";
         }*/
@@ -214,7 +215,17 @@ public class PlayerController : MonoBehaviour
                 break;
                 
         }
+
+        StoreHighscore(count);
         //Stop app
         Time.timeScale = 0;
+    }
+
+    void StoreHighscore(int newHighscore) {
+
+        int oldHighscore = PlayerPrefs.GetInt("highscore", 0);
+        if (newHighscore > oldHighscore) {
+            PlayerPrefs.SetInt("highscore", newHighscore);
+        }
     }
 }
