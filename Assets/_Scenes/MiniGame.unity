@@ -7177,6 +7177,7 @@ GameObject:
   - 33: {fileID: 758729334}
   - 64: {fileID: 758729333}
   - 23: {fileID: 758729332}
+  - 114: {fileID: 758729336}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -7245,6 +7246,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &758729336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 758729331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fa7d1f6353f4f4ba38acb03e21411f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light1: {fileID: 1370271767}
 --- !u!1 &762803168
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,7 +9668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ramp1: {fileID: 36301716}
-  ramp2: {fileID: 1000011670293660, guid: 21c653132815e8c48bbeb1bddf872985, type: 2}
+  ramp2: {fileID: 2147483647, guid: 21c653132815e8c48bbeb1bddf872985, type: 2}
   countText: {fileID: 1299322366}
   winText: {fileID: 1193691476}
   timerText: {fileID: 2099598706}
@@ -9666,11 +9679,12 @@ MonoBehaviour:
   gameMusic: {fileID: 8300000, guid: b245834f14b444eac9ca5f3db4b2b38d, type: 3}
   timeDangerSound: {fileID: 0}
   coinObjectSound: {fileID: 8300000, guid: d0533b804aeec40d0bab3f3c1b39015e, type: 3}
-  timeObjectSound: {fileID: 0}
+  timeObjectSound: {fileID: 8300000, guid: 23e65be25927047a28546aa389c91f8c, type: 3}
   windObjectSound: {fileID: 8300000, guid: f9d0f42194c5742e6981c682419944dc, type: 3}
   plusObjectSound: {fileID: 8300000, guid: 34095577cdac444fc81ab20f43b2999e, type: 3}
   windSound: {fileID: 8300000, guid: bf47aa5e1e35142e6ad3bf8e3c833c7a, type: 3}
   rampSound: {fileID: 8300000, guid: c7e53174172d549b2baf0f159137103a, type: 3}
+  wallsSound: {fileID: 8300000, guid: e75e62cb2360f4afa9120e9cf8128ed4, type: 3}
   gameOverSound: {fileID: 8300000, guid: d481bfb641fc941d0bf4f401b9b4ee10, type: 3}
   speed: 10
   windSpeed: 10
@@ -10326,6 +10340,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1370271767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1370271769}
+  - 108: {fileID: 1370271768}
+  m_Layer: 0
+  m_Name: Light1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1370271768
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370271767}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.18
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1370271769
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370271767}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 2.3300743, y: -2.2353256, z: -11.566361}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
 --- !u!1001 &1436639637
 Prefab:
   m_ObjectHideFlags: 0
