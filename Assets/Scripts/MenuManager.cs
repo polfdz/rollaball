@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     public string gameSceneName = "MiniGame";
+    public string infoSceneName = "InfoScene";
     public UnityEngine.UI.Text highscoreMenuText;
 
     object Button;
@@ -29,4 +30,10 @@ public class MenuManager : MonoBehaviour {
     {
         SceneManager.LoadScene(gameSceneName);
     }
+
+    public void LoadInfo() {
+        SceneManager.LoadScene(infoSceneName);
+        PlayerPrefs.SetInt("prevlevel", Application.loadedLevel);
+    }
+
 }
