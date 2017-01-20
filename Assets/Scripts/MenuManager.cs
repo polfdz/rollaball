@@ -6,7 +6,9 @@ public class MenuManager : MonoBehaviour {
 
     public string gameSceneName = "MiniGame";
     public string infoSceneName = "InfoScene";
+
     public UnityEngine.UI.Text highscoreMenuText;
+	public static string PreviousScene = "";
 
     object Button;
 
@@ -32,8 +34,9 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void LoadInfo() {
+		Debug.Log ("load info current scene: " + SceneManager.GetActiveScene ().name);
+		PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(infoSceneName);
-        PlayerPrefs.SetInt("prevlevel", Application.loadedLevel);
     }
 
 }
