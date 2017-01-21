@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // Audio
 	public AudioSource audioSrcMain;
+	public AudioSource audioSrcEffects;
 	public AudioSource audioSrcWind;
 
 	public AudioClip gameMusic;
@@ -118,35 +119,35 @@ public class PlayerController : MonoBehaviour
                 collider.gameObject.SetActive(false);
                 count++;
                 SetCountText();
-				audioSrcMain.PlayOneShot(coinObjectSound);
+				audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
 			case "Wall":
                 //Move wall
 				collider.transform.Translate (0.0f, -0.3f, 0.0f);
-				audioSrcMain.PlayOneShot (wallsSound);
+				audioSrcEffects.PlayOneShot (wallsSound);
                 break;
             case "Box Time":
                 randomObjects.currentTimeBoxes--;
                 collider.gameObject.SetActive(false);
                 colorTimer += 4;
-				audioSrcMain.PlayOneShot(timeObjectSound, 0.3f);
+				audioSrcEffects.PlayOneShot(timeObjectSound, 0.3f);
                 break;
             case "Box Wind":
                 collider.gameObject.SetActive(false);
                 randomObjects.desactivateWind();
-				audioSrcMain.PlayOneShot(windObjectSound, 1.0f);
+				audioSrcEffects.PlayOneShot(windObjectSound, 1.0f);
                 break;
             case "Box Ground":
                 collider.gameObject.SetActive(false);
                 randomObjects.resizeGround(0);
-				audioSrcMain.PlayOneShot(plusObjectSound);            
+				audioSrcEffects.PlayOneShot(plusObjectSound);            
 			break;
 			case "Ramp":
 				Debug.Log ("RAMP");
 				rb.AddForce (movement * speed * 50);
 				// play ramp sound when ball is y > 1 to ensure it is not just colliding with ramp
 				if (rb.position.y > 1) {
-					audioSrcMain.PlayOneShot(rampSound);
+					audioSrcEffects.PlayOneShot(rampSound);
 				}				            
                 break;
         }
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
         if (colorTimer < 11.0f)
         {
             timerText.color = Color.red;
-			audioSrcMain.PlayOneShot (timeDangerSound);
+			audioSrcEffects.PlayOneShot (timeDangerSound);
         }else {
             timerText.color = Color.green;
         }
@@ -263,7 +264,7 @@ public class PlayerController : MonoBehaviour
 		//if (isGameOver) {
 			audioSrcMain.Stop ();
 			audioSrcWind.Stop ();
-			audioSrcMain.PlayOneShot(gameOverSound);
+			audioSrcEffects.PlayOneShot(gameOverSound);
 		//}
         //Stop app
         Time.timeScale = 0;
