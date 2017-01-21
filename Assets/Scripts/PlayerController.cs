@@ -129,12 +129,12 @@ public class PlayerController : MonoBehaviour
                 randomObjects.currentTimeBoxes--;
                 collider.gameObject.SetActive(false);
                 colorTimer += 4;
-				audioSrcMain.PlayOneShot(timeObjectSound);
+				audioSrcMain.PlayOneShot(timeObjectSound, 0.3f);
                 break;
             case "Box Wind":
                 collider.gameObject.SetActive(false);
                 randomObjects.desactivateWind();
-				audioSrcMain.PlayOneShot(windObjectSound);
+				audioSrcMain.PlayOneShot(windObjectSound, 1.0f);
                 break;
             case "Box Ground":
                 collider.gameObject.SetActive(false);
