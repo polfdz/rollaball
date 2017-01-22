@@ -100,7 +100,7 @@ GameObject:
   - 4: {fileID: 113968847}
   - 82: {fileID: 113968846}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: AudioSrc Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,6 +562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedb103384b89c749991429ab98d1a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSrcInfo: {fileID: 113968846}
+  buttonAudio: {fileID: 8300000, guid: 65f596e19dc16442286adcca4fbf8bc0, type: 3}
 --- !u!1 &1700004549
 GameObject:
   m_ObjectHideFlags: 0

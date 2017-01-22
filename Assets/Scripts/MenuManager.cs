@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using  UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
@@ -7,10 +8,12 @@ public class MenuManager : MonoBehaviour {
     public string gameSceneName = "MiniGame";
     public string infoSceneName = "InfoScene";
 
-    public UnityEngine.UI.Text highscoreMenuText;
+    public Text highscoreMenuText;
 	public static string PreviousScene = "";
 
-    object Button;
+	// Audio
+	public AudioSource audioSrcMenu;
+	public AudioClip buttonAudio;
 
     // Use this for initialization
     void Start()
@@ -30,11 +33,13 @@ public class MenuManager : MonoBehaviour {
 
     public void LoadGame()
     {
+		audioSrcMenu.PlayOneShot (buttonAudio);
         SceneManager.LoadScene(gameSceneName);
     }
 
-    public void LoadInfo() {
-		Debug.Log ("load info current scene: " + SceneManager.GetActiveScene ().name);
+    public void LoadInfo() 
+	{
+		audioSrcMenu.PlayOneShot (buttonAudio);
 		PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(infoSceneName);
     }

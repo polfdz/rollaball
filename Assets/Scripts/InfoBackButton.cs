@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class InfoBackButton : MonoBehaviour {
 
+	public AudioSource audioSrcInfo;
+	public AudioClip buttonAudio;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +18,8 @@ public class InfoBackButton : MonoBehaviour {
 	}
 
 	public void goBackToPrevLevel() {
+		audioSrcInfo.PlayOneShot (buttonAudio);
+
 		string prevScene = PlayerPrefs.GetString ("prevScene", "1MainMenu");
 		Debug.Log ("clickBack prevScene: " + prevScene);
 		SceneManager.LoadScene (prevScene);

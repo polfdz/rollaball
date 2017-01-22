@@ -242,6 +242,8 @@ MonoBehaviour:
   gameSceneName: MiniGame
   infoSceneName: InfoScene
   highscoreMenuText: {fileID: 1351155766}
+  audioSrcMenu: {fileID: 1136406438}
+  buttonAudio: {fileID: 8300000, guid: 65f596e19dc16442286adcca4fbf8bc0, type: 3}
 --- !u!4 &354242028
 Transform:
   m_ObjectHideFlags: 0
@@ -254,7 +256,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &785985852
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +409,7 @@ RectTransform:
   - {fileID: 12548279}
   - {fileID: 1227023889}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -474,7 +476,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1136406437
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +487,7 @@ GameObject:
   - 4: {fileID: 1136406439}
   - 82: {fileID: 1136406438}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: AudioSrc Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +555,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -577,7 +579,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
 --- !u!1 &1227023888
 GameObject:
   m_ObjectHideFlags: 0
