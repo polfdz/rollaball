@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 		// Add music track
 		audioSrcMain.clip = gameMusic;
 		audioSrcMain.Play();
-    }
+	}
 
     // Update is called once per frame
     void Update()
@@ -175,7 +175,6 @@ public class PlayerController : MonoBehaviour
         if (colorTimer < 11.0f)
         {
             timerText.color = Color.red;
-			audioSrcEffects.PlayOneShot (timeDangerSound);
         }else {
             timerText.color = Color.green;
         }
@@ -183,6 +182,13 @@ public class PlayerController : MonoBehaviour
         {
             GameOver(1);
         }
+
+		// Play alarm sound if less than five seconds
+		if (colorTimer < 5.0f) {
+			if (!audioSrcEffects.isPlaying) {				
+				audioSrcEffects.PlayOneShot (timeDangerSound);
+			}
+		}
     }
 		
     //Ramps behavior

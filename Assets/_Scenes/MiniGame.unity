@@ -2400,7 +2400,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -9405,7 +9405,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -9781,7 +9781,7 @@ MonoBehaviour:
   audioSrcEffects: {fileID: 227361789}
   audioSrcWind: {fileID: 589042184}
   gameMusic: {fileID: 8300000, guid: b245834f14b444eac9ca5f3db4b2b38d, type: 3}
-  timeDangerSound: {fileID: 0}
+  timeDangerSound: {fileID: 8300000, guid: 931ed98157bdf4cb89572aebe4bce116, type: 3}
   coinObjectSound: {fileID: 8300000, guid: d0533b804aeec40d0bab3f3c1b39015e, type: 3}
   timeObjectSound: {fileID: 8300000, guid: 23e65be25927047a28546aa389c91f8c, type: 3}
   windObjectSound: {fileID: 8300000, guid: f9d0f42194c5742e6981c682419944dc, type: 3}
