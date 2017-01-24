@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject ramp1, ramp2;
+    public GameObject ramp1, ramp2, ramp3, ramp4, ramp5, ramp6, ramp7, ramp8;
+    private int level = 1; //level of the current platform
+    private int currentPlatform = 1; //current platform of the player. To generate random objects
+    private String currentGround = "Ground1";
     //Objects
     private Rigidbody rb; //the ball -- private not shown in Unity editor
     public Text countText, winText, timerText, highscoreText; //if public can be access in Unity editor
@@ -31,7 +36,7 @@ public class PlayerController : MonoBehaviour
 	public AudioClip gameOverSound;
 
 	//Timers
-    private float colorTimer = 15.0f;
+    private float colorTimer = 50.0f;
 
     //Counters
     private int count;
@@ -41,7 +46,6 @@ public class PlayerController : MonoBehaviour
     //Ball speed
     public float speed, windSpeed; //public will be shown in Unity editor
     public float boxSpeed;
-
 
     Vector3 movement;
     // Use this for initialization
@@ -78,9 +82,10 @@ public class PlayerController : MonoBehaviour
 			//Wind force if is active
 			applyWind(2);
 
-			//ramps
-			checkRamp();		
-		}
+            //Platforms and ramps display and behavior
+            displayRamps();
+
+        }
 
 
     }
@@ -116,45 +121,112 @@ public class PlayerController : MonoBehaviour
         //Destroy(other.gameObject);
 
         switch (collider.gameObject.tag) {
+            case "Ground":
+                if(currentGround!= collider.gameObject.name) {
+                    setCurrentPlatform(collider.gameObject.name);
+                }
+                break;
+
             case "Pick Up":
-                randomObjects.currentPickUp--;
-                collider.gameObject.SetActive(false);
+                randomObjects.currentPickUp1--;
+                Destroy(collider.gameObject);
                 count++;
                 SetCountText();
 				audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
-			case "Wall":
+            case "Pick Up2":
+                randomObjects.currentPickUp2--;
+                Destroy(collider.gameObject);
+                count += 5;
+                SetCountText();
+                audioSrcEffects.PlayOneShot(coinObjectSound);
+                break;
+            case "Pick Up3":
+                randomObjects.currentPickUp3--;
+                Destroy(collider.gameObject);
+                count += 10;
+                SetCountText();
+                audioSrcEffects.PlayOneShot(coinObjectSound);
+                break;
+            case "Pick Up4":
+                randomObjects.currentPickUp4--;
+                Destroy(collider.gameObject);
+                count += 20;
+                SetCountText();
+                audioSrcEffects.PlayOneShot(coinObjectSound);
+                break;
+            case "Bomb":
+                switch (randomObjects.currentPlatform)
+                {
+                    case 1:
+                        randomObjects.currentBombs1--;
+                        count -= 10;
+                        break;
+                    case 2:
+                        randomObjects.currentBombs1--;
+                        count -= 20;
+                        break;
+                    case 3:
+                        randomObjects.currentBombs1--;
+                        count -= 30;
+                        break;
+                    case 4:
+                        randomObjects.currentBombs1--;
+                        count -= 40;
+                        break;
+                }
+                Destroy(collider.gameObject);
+                SetCountText();
+                audioSrcEffects.PlayOneShot(coinObjectSound);  ///SOUND BOOMB!
+                break;
+            case "Wall":
                 //Move wall
 				collider.transform.Translate (0.0f, -0.3f, 0.0f);
 				audioSrcEffects.PlayOneShot (wallsSound);
                 break;
             case "Box Time":
-                randomObjects.currentTimeBoxes--;
-                collider.gameObject.SetActive(false);
-                colorTimer += 4;
+                switch (randomObjects.currentPlatform) {
+                    case 1:
+                        randomObjects.currentTimeBoxes--;
+                        colorTimer += 1;
+                        break;
+                    case 2:
+                        randomObjects.currentTimeBoxes2--;
+                        colorTimer += 3;
+                        break;
+                    case 3:
+                        randomObjects.currentTimeBoxes3--;
+                        colorTimer += 4;
+                        break;
+                    case 4:
+                        randomObjects.currentTimeBoxes4--;
+                        colorTimer += 5;
+                        break;                
+                }
+                Destroy(collider.gameObject);
 				audioSrcEffects.PlayOneShot(timeObjectSound, 0.3f);
                 break;
             case "Box Wind":
-                collider.gameObject.SetActive(false);
+                Destroy(collider.gameObject);
                 randomObjects.desactivateWind();
 				audioSrcEffects.PlayOneShot(windObjectSound, 1.0f);
                 break;
             case "Box Ground":
-                collider.gameObject.SetActive(false);
+                Destroy(collider.gameObject);
                 randomObjects.resizeGround(0);
 				audioSrcEffects.PlayOneShot(plusObjectSound);            
 			break;
 			case "Ramp":
 				Debug.Log ("RAMP");
-				rb.AddForce (movement * speed * 50);
+                rb.AddForce (movement * speed * 50);
 				// play ramp sound when ball is y > 1 to ensure it is not just colliding with ramp
 				if (rb.position.y > 1) {
 					audioSrcEffects.PlayOneShot(rampSound);
-				}				            
+				}
                 break;
         }
     }
-	 
+
     /*
      * Coins counting text
      * 
@@ -192,16 +264,98 @@ public class PlayerController : MonoBehaviour
 			}
 		}
     }
-		
-    //Ramps behavior
-    void checkRamp()
+    //current platform number of items to be generated
+    void setCurrentPlatform(String plat) {
+        switch (plat) {
+            case "Ground1":
+                makeLevel1();
+                currentGround = "Ground1";
+                break;
+            case "Ground2":
+                makeLevel2();
+                currentGround = "Ground2";
+                break;
+            case "Ground3":
+                makeLevel3();
+                currentGround = "Ground3";
+                break;
+            case "Ground4":
+                makeLevel4();
+                currentGround = "Ground4";
+                break;
+        }
+        //always on platform change
+        randomObjects.desactivateWind();
+
+    }
+    void makeLevel1()
     {
-        if(count > 4)
+        currentPlatform = 1;
+        randomObjects.currentWindBoxes = 0;
+    }
+    void makeLevel2()
+    {
+        currentPlatform = 2;
+        randomObjects.currentWindBoxes = 0;
+    }
+    void makeLevel3()
+    {
+        currentPlatform = 3;
+        randomObjects.currentWindBoxes = 0;
+    }
+    void makeLevel4()
+    {
+        currentPlatform = 4;
+        randomObjects.currentWindBoxes = 0;
+    }
+
+    public int getCurrentPlatform() {
+        return currentPlatform;
+    }
+    //Platforms and Ramps behavior
+    void displayRamps()
+    {
+
+        level = checkLevel();
+
+        switch (level)
         {
-            ramp1.SetActive(true);
+            case 2:
+                ramp1.SetActive(true);
+                ramp2.SetActive(true);
+                break;
+            case 3:
+                ramp3.SetActive(true);
+                ramp4.SetActive(true);
+                break;
+            case 4:
+                ramp5.SetActive(true);
+                ramp6.SetActive(true);
+                ramp7.SetActive(true);
+                ramp8.SetActive(true);
+                break;
         }
 
     }
+    //gets the current level for displaying ramps depending on counting coins
+    public int checkLevel()
+    {
+        if (count > 15)
+        {
+            return level = 4;
+        }
+        else if (count > 5)
+        {
+            return level = 3;
+
+        }
+        else if (count > 1)
+        {
+            return level = 2;
+        }
+        return level;
+    }
+
     /*
      * Adds force to the ball 
      * factor - determines strength of the force
@@ -290,4 +444,6 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("highscore", newHighscore);
         }
     }
+
+
 }

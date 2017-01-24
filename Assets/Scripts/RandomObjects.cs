@@ -4,22 +4,29 @@ using System.Collections;
 public class RandomObjects : MonoBehaviour
 {
     //Game Objects
-    public GameObject ground; //terrain
-    public GameObject pickUpToPlace; // GameObject to place
+    private GameObject ground; //terrain
+    public GameObject ground1, ground2, ground3, ground4;
+
+    public GameObject pickUpToPlace, pickUp2, pickUp3, pickUp4, bomb; // GameObject to place
     public GameObject boxTimeToPlace; // GameObject to place
     public GameObject boxWindToPlace;
     public GameObject groundBoxToPlace;
-
+    public PlayerController playerController;
     public WindZone windW, windE, windN, windS;
 
-
     //Couts of game objects "boxes"
-    public int numberOfPickUp; // number of objects to place
-    public int currentPickUp; // number of placed objects
-    public int numberOfTimeBoxes; // number of objects to place
-    public int currentTimeBoxes; // number of placed objects
+    public int numberOfPickUp1, numberOfPickUp2, numberOfPickUp3, numberOfPickUp4, numberOfBombs; // number of objects to place
+    public int currentPickUp1, currentPickUp2, currentPickUp3, currentPickUp4; // number of placed objects
+    public int numberOfTimeBoxes, numberOfTimeBoxes2, numberOfTimeBoxes3, numberOfTimeBoxes4; // number of objects to place
+    public int currentTimeBoxes, currentTimeBoxes2, currentTimeBoxes3, currentTimeBoxes4; // number of placed objects
+    public int numberOfBombs1, numberOfBombs2, numberOfBombs3, numberOfBombs4;
+    public int currentBombs1, currentBombs2, currentBombs3, currentBombs4;
+
     public int numberOfWindBoxes; // number of objects to place
     public int currentWindBoxes; // number of placed objects
+
+    public bool levelChanged = false;
+    public int currentPlatform = 1;
 
     //Ground size parameters
     private int terrainWidth; // terrain size (x)
@@ -30,37 +37,170 @@ public class RandomObjects : MonoBehaviour
     private float scaleZ = 2.0f;
     void Start()
     {
+
         //Ground size parametes
+        ground = getCurrentPlatform();
         updateGroundParams();
 
         //Desactivate windZones
         desactivateWind();
-    }
 
+    }
+    void FixedUpdate() {
+        
+    }
     // Update is called once per frame
     void Update()
     {
+
+       /* if (levelChanged) {
+            StartCoroutine(waitSeconds());
+
+        }*/
+        ground = getCurrentPlatform();
+        updateGroundParams();
+
         //make ground small randomly
         resizeGround(1);
-
-        // create new gameObject on random position
-        if (currentPickUp < numberOfPickUp)
-        {
-            Vector3 randoms = getRandomPositions();
-            generateObject(pickUpToPlace, randoms);
-            currentPickUp += 1;
-        }
-
-        if (currentTimeBoxes < numberOfTimeBoxes) {
-            Vector3 randoms = getRandomPositions();
-            generateObject(boxTimeToPlace, randoms);
-            currentTimeBoxes += 1;
-        }
+        //generate random objects
+        generateRandomObjects();
 
         //generate random winds
         generateRandomWind();
 
 
+    }
+
+    IEnumerator waitSeconds()
+    {
+        yield return new WaitForSeconds(2.0f);
+        levelChanged = false;
+    }
+
+    GameObject getCurrentPlatform() {
+        currentPlatform = playerController.getCurrentPlatform();
+        switch (currentPlatform)
+        {
+            case 1:
+                return ground1;
+            case 2:
+                return ground2;
+            case 3:
+                return ground3;
+            case 4:
+                return ground4;
+        }
+        return ground1;
+    }
+ 
+    //generate Random Objects for each platform
+    void generateRandomObjects()
+    {
+        switch (playerController.getCurrentPlatform())
+        {
+
+            case 1:
+                generateRandomObjects1();
+                break;
+            case 2:
+                generateRandomObjects2();
+                break;
+            case 3:
+                generateRandomObjects3();
+                break;
+            case 4:
+                generateRandomObjects4();
+                break;
+        }
+
+    }
+
+    void generateRandomObjects1() {
+        // create new gameObject on random position
+        if (currentPickUp1 < numberOfPickUp1)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(pickUpToPlace, randoms);
+            currentPickUp1 += 1;
+        }
+        if (currentTimeBoxes < numberOfTimeBoxes)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(boxTimeToPlace, randoms);
+            currentTimeBoxes++;
+        }
+
+    }
+
+    void generateRandomObjects2()
+    {
+        // create new gameObject on random position
+        if (currentPickUp2 < numberOfPickUp2)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(pickUp2, randoms);
+            currentPickUp2 += 1;
+        }
+        if (currentBombs2 < numberOfBombs2)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(bomb, randoms);
+            currentBombs2 += 1;
+        }
+        if (currentTimeBoxes2 < numberOfTimeBoxes2)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(boxTimeToPlace, randoms);
+            currentTimeBoxes2++;
+        }
+    }
+
+    void generateRandomObjects3()
+    {
+        // create new gameObject on random position
+        if (currentPickUp3 < numberOfPickUp3)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(pickUp3, randoms);
+            currentPickUp3 += 1;
+        }
+        if (currentBombs3 < numberOfBombs3)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(bomb, randoms);
+            currentBombs3 += 1;
+        }
+        if (currentTimeBoxes3 < numberOfTimeBoxes3)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(boxTimeToPlace, randoms);
+            currentTimeBoxes3++;
+        }
+
+    }
+
+    void generateRandomObjects4()
+    {
+
+        // create new gameObject on random position
+        if (currentPickUp4 < numberOfPickUp4)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(pickUp4, randoms);
+            currentPickUp4 += 1;
+        }
+        if (currentBombs4 < numberOfBombs4)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(bomb, randoms);
+            currentBombs4 += 1;
+        }
+        if (currentTimeBoxes4 < numberOfTimeBoxes4)
+        {
+            Vector3 randoms = getRandomPositions();
+            generateObject(boxTimeToPlace, randoms);
+            currentTimeBoxes4++;
+        }
     }
 
     //returns a random position inside the ground object
@@ -73,7 +213,7 @@ public class RandomObjects : MonoBehaviour
         // get the terrain height at the random position
         float posy = 0.5f;
 
-        return new Vector3(posx, posy, posz);
+        return new Vector3(terrainPosX + posx, posy, terrainPosZ + posz);
     }
 
 
@@ -83,7 +223,7 @@ public class RandomObjects : MonoBehaviour
     }
 
     //generate Wind Box
-    void generateWindBox()
+    public void generateWindBox()
     {
         Vector3 randoms = getRandomPositions();
         generateObject(boxWindToPlace, randoms);
@@ -152,8 +292,8 @@ public class RandomObjects : MonoBehaviour
         switch (i)
         {
             case 0:
-                scaleX += 0.2f;
-                scaleZ += 0.2f;
+                scaleX += 0.1f;
+                scaleZ += 0.1f;
                 ground.transform.localScale = new Vector3(scaleX, 1.0f, scaleZ);
                 break;
             case 1:
@@ -174,7 +314,7 @@ public class RandomObjects : MonoBehaviour
         Vector3 randoms = getRandomPositions();
         generateObject(groundBoxToPlace, randoms);
     }
-    void updateGroundParams() {
+    bool updateGroundParams() {
         //Boxes
         var renderer = ground.GetComponent<Renderer>();
         // terrain size x
@@ -185,5 +325,6 @@ public class RandomObjects : MonoBehaviour
         terrainPosX = (int)ground.transform.position.x;
         // terrain z position
         terrainPosZ = (int)ground.transform.position.z;
+        return true;
     }
 }

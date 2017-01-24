@@ -11,6 +11,11 @@ TagManager:
   - Wind Zone
   - Box Ground
   - Ramp
+  - Pick Up2
+  - Pick Up3
+  - Pick Up4
+  - Bomb
+  - Ground
   layers:
   - Default
   - TransparentFX
