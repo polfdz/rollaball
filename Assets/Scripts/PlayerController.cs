@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	public AudioSource audioSrcWind;
 
 	public AudioClip gameMusic;
+	public AudioClip gameOverMusic;
 	public AudioClip timeDangerSound;
 	public AudioClip coinObjectSound;
 	public AudioClip timeObjectSound;
@@ -267,11 +268,11 @@ public class PlayerController : MonoBehaviour
         StoreHighscore(count);
 
 		isGameOver = true;
-		//if (isGameOver) {
-			audioSrcMain.Stop ();
-			audioSrcWind.Stop ();
-			audioSrcEffects.PlayOneShot(gameOverSound);
-		//}
+
+		audioSrcMain.clip = gameOverMusic;
+		audioSrcMain.Play ();
+		audioSrcWind.Stop ();
+		audioSrcEffects.PlayOneShot(gameOverSound);
         //Stop app
         Time.timeScale = 0;
     }
