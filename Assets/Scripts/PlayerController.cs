@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     //Objects
     private Rigidbody rb; //the ball -- private not shown in Unity editor
     public Text countText, winText, timerText, highscoreText; //if public can be access in Unity editor
+	public Button restartButton;
+	public Button menuButton;
 
     //Other classes for attributes access 
     public RandomObjects randomObjects;
@@ -44,9 +46,8 @@ public class PlayerController : MonoBehaviour
     Vector3 movement;
     // Use this for initialization
     void Start()
-    {
+	{
         //ramp1.SetActive(false);
-
         //start game
 		isGameOver = false;
         Time.timeScale = 1;
@@ -252,6 +253,8 @@ public class PlayerController : MonoBehaviour
      */
     void GameOver(int type)
     {		
+		isGameOver = true;
+
         switch (type)
         {
             case 0:
@@ -267,13 +270,17 @@ public class PlayerController : MonoBehaviour
         }
         StoreHighscore(count);
 
-		isGameOver = true;
+		// Show restart button
+		restartButton.gameObject.SetActive (true);
+		menuButton.gameObject.SetActive (true);
 
+		// Audio stuff
 		audioSrcMain.clip = gameOverMusic;
 		audioSrcMain.Play ();
 		audioSrcWind.Stop ();
 		audioSrcEffects.PlayOneShot(gameOverSound);
-        //Stop app
+        
+		//Stop app
         Time.timeScale = 0;
     }
 
