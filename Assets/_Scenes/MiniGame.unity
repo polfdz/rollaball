@@ -4947,7 +4947,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 584
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -4955,11 +4955,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 264
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 248
+      value: -309
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_AnchorMin.x
@@ -4971,11 +4971,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: m_Pivot.x
@@ -4991,7 +4991,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: MoveBase
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: HideOnRelease
@@ -4999,7 +4999,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
       propertyPath: MovementRange
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
