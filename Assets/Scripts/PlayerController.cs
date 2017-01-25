@@ -2,10 +2,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using CnControls;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject ramp1, ramp2, ramp3, ramp4, ramp5, ramp6, ramp7, ramp8;
+    public GameObject joystick;
     private int level = 1; //level of the current platform
     private int currentPlatform = 1; //current platform of the player. To generate random objects
     private String currentGround = "Ground1";
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
     //Ball speed
     public float speed, windSpeed; //public will be shown in Unity editor
     public float boxSpeed;
-
+    public bool joystickMode = false;
     Vector3 movement;
     // Use this for initialization
     void Start()
@@ -65,7 +67,16 @@ public class PlayerController : MonoBehaviour
 		// Add music track
 		audioSrcMain.clip = gameMusic;
 		audioSrcMain.Play();
-	}
+
+        //show or hide joystick
+        if (joystickMode)
+        {
+            joystick.gameObject.SetActive(true);
+        }
+        else {
+            joystick.gameObject.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -93,6 +104,7 @@ public class PlayerController : MonoBehaviour
     //Before performing any physics calculation
     void FixedUpdate()
     {
+
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -105,14 +117,21 @@ public class PlayerController : MonoBehaviour
             movement = new Vector3(x, y, z);
             rb.AddForce(movement * speed);
 
-        }
-        else {
-
-            float moveHorizontal = Input.acceleration.x;
-            float moveVertical = Input.acceleration.y;
-            movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-            rb.AddForce(movement * speed * 3);
+        }else { //MOBILE DEVICE
+            float moveHorizontal;
+                float moveVertical;
+            if (joystickMode)
+            {
+                moveHorizontal = CnInputManager.GetAxis("Horizontal");
+                moveVertical = CnInputManager.GetAxis("Vertical");
+                movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+                rb.AddForce(movement * speed);
+            }else {
+                moveHorizontal = Input.acceleration.x * 1.2f;
+                moveVertical  = Input.acceleration.y * 1.8f;
+                movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+                rb.AddForce(movement * speed * 3);
+            }
         }
     }
 
@@ -332,7 +351,7 @@ public class PlayerController : MonoBehaviour
                 ramp5.SetActive(true);
                 ramp6.SetActive(true);
                 ramp7.SetActive(true);
-                ramp8.SetActive(true);
+                //ramp8.SetActive(true);
                 break;
         }
 

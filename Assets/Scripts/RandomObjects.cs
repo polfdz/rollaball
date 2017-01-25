@@ -292,8 +292,8 @@ public class RandomObjects : MonoBehaviour
         switch (i)
         {
             case 0:
-                scaleX += 0.1f;
-                scaleZ += 0.1f;
+                scaleX += 0.2f;
+                scaleZ += 0.2f;
                 ground.transform.localScale = new Vector3(scaleX, 1.0f, scaleZ);
                 break;
             case 1:

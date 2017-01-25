@@ -4906,6 +4906,104 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011670293660, guid: 21c653132815e8c48bbeb1bddf872985,
     type: 2}
   m_PrefabInternal: {fileID: 273131732}
+--- !u!1001 &355747551
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1792778069}
+    m_Modifications:
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 264
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 248
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: MoveBase
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: HideOnRelease
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+      propertyPath: MovementRange
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &360336524 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011670293660, guid: 21c653132815e8c48bbeb1bddf872985,
@@ -10400,6 +10498,7 @@ MonoBehaviour:
   ramp6: {fileID: 1218127193}
   ramp7: {fileID: 1460611143}
   ramp8: {fileID: 360336524}
+  joystick: {fileID: 1497092062}
   countText: {fileID: 1299322366}
   winText: {fileID: 1193691476}
   timerText: {fileID: 2099598706}
@@ -10424,6 +10523,7 @@ MonoBehaviour:
   speed: 10
   windSpeed: 10
   boxSpeed: 5
+  joystickMode: 0
 --- !u!23 &1086823060
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11765,6 +11865,15 @@ Transform:
   m_PrefabParentObject: {fileID: 4000014196966656, guid: 50ad82d37626d5b41afe4da0c84fdfee,
     type: 2}
   m_PrefabInternal: {fileID: 659147590}
+--- !u!1 &1497092062 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: bb945e2a87718084184a72db9cf1ee27, type: 2}
+  m_PrefabInternal: {fileID: 355747551}
+--- !u!224 &1497092063 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22400004, guid: bb945e2a87718084184a72db9cf1ee27,
+    type: 2}
+  m_PrefabInternal: {fileID: 355747551}
 --- !u!1 &1531297640
 GameObject:
   m_ObjectHideFlags: 0
@@ -12153,6 +12262,7 @@ RectTransform:
   - {fileID: 2089115465}
   - {fileID: 834537609}
   - {fileID: 1303394795}
+  - {fileID: 1497092063}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -12250,7 +12360,7 @@ MonoBehaviour:
   pickUp2: {fileID: 1000012307196948, guid: 9ad758eaa5b118a40bf4dbd5cc7651c3, type: 2}
   pickUp3: {fileID: 1000013471400882, guid: 145d2af8fdebb5743b9c16691edf541b, type: 2}
   pickUp4: {fileID: 1000010700976614, guid: 7769a1487d6c51642a288c4758fc5220, type: 2}
-  bomb: {fileID: 1000012635620526, guid: 893a01bbb3c975e4ba5d4fdb4c025ee6, type: 2}
+  bomb: {fileID: 1000010129200654, guid: 97eebf8c98ebd124e95bcb1120d97228, type: 2}
   boxTimeToPlace: {fileID: 1000013005995162, guid: 2e4faa1ace0cc834492748072d286000,
     type: 2}
   boxWindToPlace: {fileID: 1000013005995162, guid: 873af840b73e7c449b73299f7cfd2383,
