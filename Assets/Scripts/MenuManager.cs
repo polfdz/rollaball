@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using  UnityEngine.UI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
     public string gameSceneName = "MiniGame";
     public string infoSceneName = "InfoScene";
+	public string settingsSceneName = "Settings";
+
 
     public Text highscoreMenuText;
 	public static string PreviousScene = "";
@@ -43,5 +45,14 @@ public class MenuManager : MonoBehaviour {
 		PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(infoSceneName);
     }
+
+	public void LoadSettings() {
+		audioSrcMenu.PlayOneShot (buttonAudio);
+		SceneManager.LoadScene(settingsSceneName);
+	}
+
+	public void QuitGame() {
+		Application.Quit();
+	}
 
 }

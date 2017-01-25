@@ -68,14 +68,14 @@ public class PlayerController : MonoBehaviour
 		audioSrcMain.clip = gameMusic;
 		audioSrcMain.Play();
 
-        //show or hide joystick
-        if (joystickMode)
-        {
-            joystick.gameObject.SetActive(true);
-        }
-        else {
-            joystick.gameObject.SetActive(false);
-        }
+		setControls ();
+		if (joystickMode && SystemInfo.deviceType != DeviceType.Desktop)
+		{
+			joystick.gameObject.SetActive(true);
+		}
+		else {
+			joystick.gameObject.SetActive(false);
+		}
     }
 
     // Update is called once per frame
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
         }else { //MOBILE DEVICE
             float moveHorizontal;
-                float moveVertical;
+            float moveVertical;
             if (joystickMode)
             {
                 moveHorizontal = CnInputManager.GetAxis("Horizontal");
@@ -464,5 +464,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+	void setControls() {
+		//show or hide joystick
+		float joystickPrefs = PlayerPrefs.GetFloat("controls", 0);
+		print (joystickPrefs);
+		if (joystickPrefs == 0.0f) {
+			joystickMode = false;
+		} else {
+			joystickMode = true;
+		}				
+		print (joystickMode);
+	}
 }
