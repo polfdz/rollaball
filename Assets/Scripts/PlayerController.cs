@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 	public AudioClip timeObjectSound;
 	public AudioClip windObjectSound;
 	public AudioClip plusObjectSound;
+	public AudioClip bombExplosionSound;
 	public AudioClip windSound;
 	public AudioClip rampSound;
 	public AudioClip wallsSound;
@@ -174,29 +175,29 @@ public class PlayerController : MonoBehaviour
                 SetCountText();
                 audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
-            case "Bomb":
-                switch (randomObjects.currentPlatform)
-                {
-                    case 1:
-                        randomObjects.currentBombs1--;
-                        count -= 10;
-                        break;
-                    case 2:
-                        randomObjects.currentBombs1--;
-                        count -= 20;
-                        break;
-                    case 3:
-                        randomObjects.currentBombs1--;
-                        count -= 30;
-                        break;
-                    case 4:
-                        randomObjects.currentBombs1--;
-                        count -= 40;
-                        break;
-                }
+		case "Bomb":
+			switch (randomObjects.currentPlatform) {
+			case 1:
+				randomObjects.currentBombs1--;
+				count -= 10;
+				break;
+			case 2:
+				randomObjects.currentBombs1--;
+				count -= 20;
+				break;
+			case 3:
+				randomObjects.currentBombs1--;
+				count -= 30;
+				break;
+			case 4:
+				randomObjects.currentBombs1--;
+				count -= 40;
+				break;
+			}				
+				showExplosion (collider.gameObject);
                 Destroy(collider.gameObject);
                 SetCountText();
-                audioSrcEffects.PlayOneShot(coinObjectSound);  ///SOUND BOOMB!
+                audioSrcEffects.PlayOneShot(bombExplosionSound);  ///SOUND BOOMB!
                 break;
             case "Wall":
                 //Move wall
@@ -417,7 +418,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
+	void showExplosion(GameObject collider) {
+		Vector3 position = collider.transform.position;
+		GameObject explosion = Instantiate(Resources.Load("porglezomppyroclastics/pyroclastic puff"), position, Quaternion.identity) as GameObject; 
+		ExplosionMat e = new ExplosionMat ();
+		e._alpha = 0;
+	}
     /*
      * Ends the game depending on type of ending
      * 0 ball out of the terrain
