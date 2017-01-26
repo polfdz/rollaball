@@ -278,16 +278,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 712964126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 879944803}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 164}
+  m_AnchoredPosition: {x: 0, y: -362}
   m_SizeDelta: {x: 1860, y: 1723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712964128
@@ -311,10 +311,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8c513eb800d3a42a6b1ba97d441fdeff, type: 3}
-    m_FontSize: 80
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 8
+    m_MinSize: 5
     m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -322,10 +322,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "The goal of the game is to get as many points before the time runs out.\r\n\r\nGolden
-    Coin: Gives you one point.\r\nClock coin: Adds 3 seconds to your time\r\nWind
-    Coin: Wind stops.\r\nGround Coin: Makes the ground larger helping you not fall.\r\n\r\n\r\nAs
-    the game goes on the ground gets smaller and smaller and wind starts blowing.\r\nWhen
+  m_Text: "The goal of the game is to get as many points before the time runs out!
+    Jump to the next plaform so you can get more points!\n\r\nGolden Coin: Gives you
+    point(s).\r\nClock coin: Adds seconds to your time.\r\nWind Coin: Stops wind.\nGround
+    Coin: Makes the ground larger helping you not fall.\r\n\rBomb: You lose points!\n\r\nWhen
     you hit a wall, it starts lowering down and if you hit it enough times, the next
     time you will fall."
 --- !u!222 &712964129
@@ -419,8 +419,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 712964127}
   - {fileID: 1346244980}
+  - {fileID: 712964127}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -460,7 +460,7 @@ RectTransform:
   m_Children:
   - {fileID: 2030095086}
   m_Father: {fileID: 879944803}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 50}

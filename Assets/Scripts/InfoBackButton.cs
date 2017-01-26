@@ -18,9 +18,10 @@ public class InfoBackButton : MonoBehaviour {
 	}
 
 	public void goBackToPrevLevel() {
+		print ("test");
 		audioSrcInfo.PlayOneShot (buttonAudio);
 
-		string prevScene = PlayerPrefs.GetString ("prevScene", "1MainMenu");
+		string prevScene = PlayerPrefs.GetString ("prevScene", "MainMenu");
 		Debug.Log ("clickBack prevScene: " + prevScene);
 		SceneManager.LoadScene (prevScene);
 	}
