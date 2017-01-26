@@ -473,12 +473,15 @@ public class PlayerController : MonoBehaviour
 	void setControls() {
 		//show or hide joystick
 		float joystickPrefs = PlayerPrefs.GetFloat("controls", 0);
-		print (joystickPrefs);
 		if (joystickPrefs == 0.0f) {
 			joystickMode = false;
 		} else {
 			joystickMode = true;
 		}				
-		print (joystickMode);
+	}
+
+	// Get time for lights
+	public float getColorTimer() {
+		return colorTimer;
 	}
 }
