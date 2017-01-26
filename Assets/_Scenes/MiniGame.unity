@@ -12603,7 +12603,7 @@ MonoBehaviour:
   ground2: {fileID: 645252712}
   ground3: {fileID: 1306829255}
   ground4: {fileID: 114787607}
-  pickUpToPlace: {fileID: 1000013005995162, guid: 50ad82d37626d5b41afe4da0c84fdfee,
+  pickUpToPlace: {fileID: 1000010700976614, guid: 7769a1487d6c51642a288c4758fc5220,
     type: 2}
   pickUp2: {fileID: 1000012307196948, guid: 9ad758eaa5b118a40bf4dbd5cc7651c3, type: 2}
   pickUp3: {fileID: 1000013471400882, guid: 145d2af8fdebb5743b9c16691edf541b, type: 2}
