@@ -15,7 +15,7 @@ public class SettingsManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		showSliderCorrectValues ();
 	}
 	
 	// Update is called once per frame
@@ -25,8 +25,15 @@ public class SettingsManager : MonoBehaviour {
 
 	public void clickBackButton() {
 		audioSrcSettings.PlayOneShot (buttonAudio);
-		SceneManager.LoadScene("MainMenu");
+
 		PlayerPrefs.SetFloat("controls", controlsSlider.value);
-		PlayerPrefs.SetFloat("difficulty", controlsSlider.value);
+		PlayerPrefs.SetFloat("difficulty", difficultySlider.value);
+
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	private void showSliderCorrectValues() {
+		controlsSlider.value = PlayerPrefs.GetFloat("controls", 0);
+		difficultySlider.value = PlayerPrefs.GetFloat("difficulty", 0);
 	}
 }
