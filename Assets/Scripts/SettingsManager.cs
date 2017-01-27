@@ -3,9 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SettingsScript : MonoBehaviour {
-	public int CONTROLS_ACCEL = 0;
-	public  int CONTROLS_JOYSTICK = 1;
+public class SettingsManager : MonoBehaviour {
 
 	// Audio
 	public AudioSource audioSrcSettings;
@@ -13,6 +11,7 @@ public class SettingsScript : MonoBehaviour {
 
 	// Slider
 	public Slider controlsSlider;
+	public Slider difficultySlider;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +27,6 @@ public class SettingsScript : MonoBehaviour {
 		audioSrcSettings.PlayOneShot (buttonAudio);
 		SceneManager.LoadScene("MainMenu");
 		PlayerPrefs.SetFloat("controls", controlsSlider.value);
-
+		PlayerPrefs.SetFloat("difficulty", controlsSlider.value);
 	}
 }

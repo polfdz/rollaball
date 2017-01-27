@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class HelpScene : MonoBehaviour {
+public class HelpManager : MonoBehaviour {
 
 	public AudioSource audioSrcInfo;
 	public AudioClip buttonAudio;
