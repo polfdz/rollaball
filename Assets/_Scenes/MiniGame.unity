@@ -10058,7 +10058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &895271831
 Transform:
   m_ObjectHideFlags: 0
@@ -12716,6 +12716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869d8aa468331148b62558c8255c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ground1: {fileID: 758729331}
   ground2: {fileID: 645252712}
   ground3: {fileID: 1306829255}
@@ -12728,7 +12729,8 @@ MonoBehaviour:
   bomb: {fileID: 1000010129200654, guid: 97eebf8c98ebd124e95bcb1120d97228, type: 2}
   boxTimeToPlace: {fileID: 1000013005995162, guid: 2e4faa1ace0cc834492748072d286000,
     type: 2}
-  boxWindToPlace: {fileID: 100000, guid: cc86147c7c594407cb7694b3afd2da8b, type: 3}
+  boxWindToPlace: {fileID: 1000013005995162, guid: 873af840b73e7c449b73299f7cfd2383,
+    type: 2}
   groundBoxToPlace: {fileID: 1000013005995162, guid: 468f1b91101b2384780a33b47d2a03a0,
     type: 2}
   playerController: {fileID: 1086823059}
@@ -12741,22 +12743,22 @@ MonoBehaviour:
   numberOfPickUp3: 10
   numberOfPickUp4: 10
   numberOfBombs: 2
-  currentPickUp1: 0
-  currentPickUp2: 0
-  currentPickUp3: 0
-  currentPickUp4: 0
   numberOfTimeBoxes: 2
   numberOfTimeBoxes2: 3
   numberOfTimeBoxes3: 4
   numberOfTimeBoxes4: 4
-  currentTimeBoxes: 0
-  currentTimeBoxes2: 0
-  currentTimeBoxes3: 0
-  currentTimeBoxes4: 0
   numberOfBombs1: 4
   numberOfBombs2: 2
   numberOfBombs3: 3
   numberOfBombs4: 4
+  currentPickUp1: 0
+  currentPickUp2: 0
+  currentPickUp3: 0
+  currentPickUp4: 0
+  currentTimeBoxes: 0
+  currentTimeBoxes2: 0
+  currentTimeBoxes3: 0
+  currentTimeBoxes4: 0
   currentBombs1: 0
   currentBombs2: 0
   currentBombs3: 0
