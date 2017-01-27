@@ -4,6 +4,7 @@ using System.Collections;
 public class RandomObjects : MonoBehaviour
 {
     //Game Objects
+	public GameObject player;
     private GameObject ground; //terrain
     public GameObject ground1, ground2, ground3, ground4;
 
@@ -16,11 +17,12 @@ public class RandomObjects : MonoBehaviour
 
     //Couts of game objects "boxes"
     public int numberOfPickUp1, numberOfPickUp2, numberOfPickUp3, numberOfPickUp4, numberOfBombs; // number of objects to place
-    public int currentPickUp1, currentPickUp2, currentPickUp3, currentPickUp4; // number of placed objects
     public int numberOfTimeBoxes, numberOfTimeBoxes2, numberOfTimeBoxes3, numberOfTimeBoxes4; // number of objects to place
-    public int currentTimeBoxes, currentTimeBoxes2, currentTimeBoxes3, currentTimeBoxes4; // number of placed objects
     public int numberOfBombs1, numberOfBombs2, numberOfBombs3, numberOfBombs4;
-    public int currentBombs1, currentBombs2, currentBombs3, currentBombs4;
+
+	public int currentPickUp1, currentPickUp2, currentPickUp3, currentPickUp4; // number of placed objects
+	public int currentTimeBoxes, currentTimeBoxes2, currentTimeBoxes3, currentTimeBoxes4; // number of placed objects
+	public int currentBombs1, currentBombs2, currentBombs3, currentBombs4;
 
     public int numberOfWindBoxes; // number of objects to place
     public int currentWindBoxes; // number of placed objects
@@ -35,6 +37,9 @@ public class RandomObjects : MonoBehaviour
     private int terrainPosZ; // terrain position z
     private float scaleX = 2.0f;
     private float scaleZ = 2.0f;
+
+	// Difficulty
+	private int difficulty;
     void Start()
     {
 
@@ -45,6 +50,8 @@ public class RandomObjects : MonoBehaviour
         //Desactivate windZones
         desactivateWind();
 
+		// Set difficulty, number of objects on each platform
+		setObjectsForDifficulty (playerController.getDifficulty ());
     }
     void FixedUpdate() {
         
@@ -327,4 +334,54 @@ public class RandomObjects : MonoBehaviour
         terrainPosZ = (int)ground.transform.position.z;
         return true;
     }
+
+	private void setObjectsForDifficulty (float d) {
+		
+		if (d == 1) { // normal 
+			numberOfPickUp1 = 10;
+			numberOfPickUp2 = 9; 
+			numberOfPickUp3 = 8; 
+			numberOfPickUp4 = 7; 
+
+			numberOfTimeBoxes = 2;
+			numberOfTimeBoxes2 = 2;
+			numberOfTimeBoxes3 = 3;
+			numberOfTimeBoxes4 = 3;
+
+			numberOfBombs1 = 1;
+			numberOfBombs2 = 3;
+			numberOfBombs3 = 4;
+			numberOfBombs4 = 5;
+		} else if (d == 2) { // hard 
+			numberOfPickUp1 = 7;
+			numberOfPickUp2 = 6; 
+			numberOfPickUp3 = 4; 
+			numberOfPickUp4 = 3; 
+
+			numberOfTimeBoxes = 2;
+			numberOfTimeBoxes2 = 2;
+			numberOfTimeBoxes3 = 2;
+			numberOfTimeBoxes4 = 2;
+
+			numberOfBombs1 = 4;
+			numberOfBombs2 = 5;
+			numberOfBombs3 = 6;
+			numberOfBombs4 = 7;
+		} else { // easy
+			numberOfPickUp1 = 10;
+			numberOfPickUp2 = 10; 
+			numberOfPickUp3 = 10; 
+			numberOfPickUp4 = 10; 
+
+			numberOfTimeBoxes = 2;
+			numberOfTimeBoxes2 = 3;
+			numberOfTimeBoxes3 = 4;
+			numberOfTimeBoxes4 = 4;
+
+			numberOfBombs1 = 0;
+			numberOfBombs2 = 2;
+			numberOfBombs3 = 3;
+			numberOfBombs4 = 4;
+		}
+	}
 }

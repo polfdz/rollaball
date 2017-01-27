@@ -6,12 +6,15 @@ using CnControls;
 
 public class PlayerController : MonoBehaviour
 {
+	//Timers
+	private float colorTimer = 50.0f;
+
+	// Objects
     public GameObject ramp1, ramp2, ramp3, ramp4, ramp5, ramp6, ramp7, ramp8;
     public GameObject joystick;
     private int level = 1; //level of the current platform
     private int currentPlatform = 1; //current platform of the player. To generate random objects
-    private String currentGround = "Ground1";
-    //Objects
+    private string currentGround = "Ground1";
     private Rigidbody rb; //the ball -- private not shown in Unity editor
     public Text countText, winText, timerText, highscoreText; //if public can be access in Unity editor
 	public Button restartButton;
@@ -38,19 +41,18 @@ public class PlayerController : MonoBehaviour
 	public AudioClip wallsSound;
 	public AudioClip gameOverSound;
 
-	//Timers
-    private float colorTimer = 50.0f;
-
     //Counters
     private int count;
 
 	// GameOver Flag
 	private bool isGameOver;
+
     //Ball speed
     public float speed, windSpeed; //public will be shown in Unity editor
     public float boxSpeed;
     public bool joystickMode = false;
     Vector3 movement;
+
     // Use this for initialization
     void Start()
 	{
@@ -70,6 +72,8 @@ public class PlayerController : MonoBehaviour
 		audioSrcMain.Play();
 
 		setControls ();
+		setDifficulty ();
+
 		if (joystickMode && SystemInfo.deviceType != DeviceType.Desktop)
 		{
 			joystick.gameObject.SetActive(true);
@@ -470,14 +474,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-	void setControls() {
+	private void setControls() {
 		//show or hide joystick
-		float joystickPrefs = PlayerPrefs.GetFloat("controls", 0);
-		if (joystickPrefs == 0.0f) {
+		float controlPrefs = PlayerPrefs.GetFloat("controls", 0);
+		if (controlPrefs == 0.0f) {
 			joystickMode = false;
 		} else {
 			joystickMode = true;
 		}				
+	}
+
+	// Difficulty
+	private void setDifficulty() {
+		float difficultyPrefs = PlayerPrefs.GetFloat("difficulty", 0);
+
+		if (difficultyPrefs == 1) {
+			setNormalDifficulty ();
+		} else if (difficultyPrefs == 2) {
+			setHardDifficulty ();
+		}
+
+	}
+
+	private void setNormalDifficulty() {
+		colorTimer = 30.0f;
+	}
+
+	private void setHardDifficulty() {
+		colorTimer = 15.0f;
+	}
+
+	// Get Difficulty for changing number of RandomObjects
+	public float getDifficulty() {
+		return PlayerPrefs.GetFloat("difficulty", 0);
 	}
 
 	// Get time for lights
