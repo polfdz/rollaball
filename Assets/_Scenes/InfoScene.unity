@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30082035, g: 0.25196207, b: 0.2058048, a: 1}
+  m_IndirectSpecularColor: {r: 0.29970157, g: 0.2514796, b: 0.20493853, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
   m_Text: "          Gives you point(s).\r\n          Adds seconds to your time.\r\n
-    \         Stops wind.\n          Makes the ground larger helping you not fall.\r\n\r
+    \         Stops wind.\n          Makes the ground larger helping you not falling.\r\n\r
     \         You lose points!"
 --- !u!222 &68333904
 CanvasRenderer:

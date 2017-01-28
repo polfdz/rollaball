@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
             {
                 moveHorizontal = CnInputManager.GetAxis("Horizontal");
                 moveVertical = CnInputManager.GetAxis("Vertical");
-                movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+                movement = new Vector3(moveHorizontal *1.2f, 0.0f, moveVertical*1.2f);
                 rb.AddForce(movement * speed);
             }else {
                 moveHorizontal = Input.acceleration.x * 1.2f;
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     // Collisions
     void OnTriggerEnter(Collider collider) {
         //Destroy(other.gameObject);
-
+        float dificulty = getDifficulty();
         switch (collider.gameObject.tag) {
             case "Ground":
                 if(currentGround!= collider.gameObject.name) {
@@ -161,14 +161,35 @@ public class PlayerController : MonoBehaviour
             case "Pick Up2":
                 randomObjects.currentPickUp2--;
                 Destroy(collider.gameObject);
-                count += 5;
+                if (dificulty == 1) //norm
+                {
+                    count += 5;
+                }
+                else if (dificulty == 2) //hard
+                {
+                    count += 10;
+                }
+                else { //easy
+                    count += 3;
+                }
                 SetCountText();
                 audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
             case "Pick Up3":
                 randomObjects.currentPickUp3--;
                 Destroy(collider.gameObject);
-                count += 10;
+                if (dificulty == 1) //norm
+                {
+                    count += 10;
+                }
+                else if (dificulty == 2) //hard
+                {
+                    count += 20;
+                }
+                else
+                { //easy
+                    count += 5;
+                }
                 SetCountText();
                 audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
@@ -176,6 +197,18 @@ public class PlayerController : MonoBehaviour
                 randomObjects.currentPickUp4--;
                 Destroy(collider.gameObject);
                 count += 20;
+                if (dificulty == 1) //norm
+                {
+                    count += 12;
+                }
+                else if (dificulty == 2) //hard
+                {
+                    count += 25;
+                }
+                else
+                { //easy
+                    count += 7;
+                }
                 SetCountText();
                 audioSrcEffects.PlayOneShot(coinObjectSound);
                 break;
@@ -184,7 +217,7 @@ public class PlayerController : MonoBehaviour
 			case 1:
 				randomObjects.currentBombs1--;
 				count -= 10;
-				break;
+                 break;
 			case 2:
 				randomObjects.currentBombs1--;
 				count -= 20;
@@ -212,19 +245,63 @@ public class PlayerController : MonoBehaviour
                 switch (randomObjects.currentPlatform) {
                     case 1:
                         randomObjects.currentTimeBoxes--;
-                        colorTimer += 1;
+                        if (dificulty == 1) //norm
+                        {
+                            colorTimer += 1;
+                        }
+                        else if (dificulty == 2) //hard
+                        {
+                            colorTimer += 2;
+                        }
+                        else
+                        { //easy
+                            colorTimer += 1;
+                        }
                         break;
                     case 2:
                         randomObjects.currentTimeBoxes2--;
-                        colorTimer += 3;
+                        if (dificulty == 1) //norm
+                        {
+                            colorTimer += 3;
+                        }
+                        else if (dificulty == 2) //hard
+                        {
+                            colorTimer += 4;
+                        }
+                        else
+                        { //easy
+                            colorTimer += 2;
+                        }
                         break;
                     case 3:
                         randomObjects.currentTimeBoxes3--;
-                        colorTimer += 4;
+                        if (dificulty == 1) //norm
+                        {
+                            colorTimer += 4;
+                        }
+                        else if (dificulty == 2) //hard
+                        {
+                            colorTimer += 6;
+                        }
+                        else
+                        { //easy
+                            colorTimer += 3;
+                        }
                         break;
                     case 4:
                         randomObjects.currentTimeBoxes4--;
-                        colorTimer += 5;
+                        if (dificulty == 1) //norm
+                        {
+                            colorTimer += 5;
+                        }
+                        else if (dificulty == 2) //hard
+                        {
+                            colorTimer += 7;
+                        }
+                        else
+                        { //easy
+                            colorTimer += 4;
+                        }
                         break;                
                 }
                 Destroy(collider.gameObject);
@@ -262,6 +339,9 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
+    public int getCount() {
+        return count;
+    }
     /*
      * Color Timer behavior
      * 
@@ -456,9 +536,14 @@ public class PlayerController : MonoBehaviour
 		// Show restart button
 		restartButton.gameObject.SetActive (true);
 		menuButton.gameObject.SetActive (true);
+        //hide joysitick
+        if (joystickMode)
+        {
+            joystick.gameObject.SetActive(false);
+        }
 
-		// Audio stuff
-		audioSrcMain.clip = gameOverMusic;
+        // Audio stuff
+        audioSrcMain.clip = gameOverMusic;
 		audioSrcMain.Play ();
 		audioSrcWind.Stop ();
 		audioSrcEffects.PlayOneShot(gameOverSound);

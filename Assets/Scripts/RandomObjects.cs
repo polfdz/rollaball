@@ -23,7 +23,7 @@ public class RandomObjects : MonoBehaviour
 	public int currentPickUp1, currentPickUp2, currentPickUp3, currentPickUp4; // number of placed objects
 	public int currentTimeBoxes, currentTimeBoxes2, currentTimeBoxes3, currentTimeBoxes4; // number of placed objects
 	public int currentBombs1, currentBombs2, currentBombs3, currentBombs4;
-
+    public int bombsInOneAfter = 10; //after count > 10 start generating bombs in 1
     public int numberOfWindBoxes; // number of objects to place
     public int currentWindBoxes; // number of placed objects
 
@@ -135,6 +135,17 @@ public class RandomObjects : MonoBehaviour
             Vector3 randoms = getRandomPositions();
             generateObject(boxTimeToPlace, randoms);
             currentTimeBoxes++;
+        }
+        Debug.Log("COUNT: " + playerController.getCount() + " " + bombsInOneAfter);
+
+        if (playerController.getCount() > bombsInOneAfter) {
+            Debug.Log("COUNT: " + playerController.getCount() + " " +bombsInOneAfter);
+            if (currentBombs1 < numberOfBombs1)
+            {
+                Vector3 randoms = getRandomPositions();
+                generateObject(bomb, randoms);
+                currentBombs1 ++;
+            }
         }
 
     }
@@ -299,8 +310,8 @@ public class RandomObjects : MonoBehaviour
         switch (i)
         {
             case 0:
-                scaleX += 0.2f;
-                scaleZ += 0.2f;
+                scaleX += 0.15f;
+                scaleZ += 0.15f;
                 ground.transform.localScale = new Vector3(scaleX, 1.0f, scaleZ);
                 break;
             case 1:
@@ -348,11 +359,14 @@ public class RandomObjects : MonoBehaviour
 			numberOfTimeBoxes3 = 3;
 			numberOfTimeBoxes4 = 3;
 
-			numberOfBombs1 = 1;
-			numberOfBombs2 = 3;
-			numberOfBombs3 = 4;
-			numberOfBombs4 = 5;
-		} else if (d == 2) { // hard 
+			numberOfBombs1 = 3;
+			numberOfBombs2 = 5;
+			numberOfBombs3 = 6;
+			numberOfBombs4 = 7;
+
+            bombsInOneAfter = 10;
+
+        } else if (d == 2) { // hard 
 			numberOfPickUp1 = 7;
 			numberOfPickUp2 = 6; 
 			numberOfPickUp3 = 4; 
@@ -363,25 +377,32 @@ public class RandomObjects : MonoBehaviour
 			numberOfTimeBoxes3 = 2;
 			numberOfTimeBoxes4 = 2;
 
-			numberOfBombs1 = 4;
-			numberOfBombs2 = 5;
-			numberOfBombs3 = 6;
-			numberOfBombs4 = 7;
-		} else { // easy
+			numberOfBombs1 = 6;
+			numberOfBombs2 = 7;
+			numberOfBombs3 = 8;
+			numberOfBombs4 = 9;
+
+            bombsInOneAfter = 5;
+
+        }
+        else { // easy
 			numberOfPickUp1 = 10;
 			numberOfPickUp2 = 10; 
 			numberOfPickUp3 = 10; 
 			numberOfPickUp4 = 10; 
 
-			numberOfTimeBoxes = 2;
-			numberOfTimeBoxes2 = 3;
-			numberOfTimeBoxes3 = 4;
-			numberOfTimeBoxes4 = 4;
+			numberOfTimeBoxes = 3;
+			numberOfTimeBoxes2 = 4;
+			numberOfTimeBoxes3 = 5;
+			numberOfTimeBoxes4 = 5;
 
-			numberOfBombs1 = 0;
-			numberOfBombs2 = 2;
-			numberOfBombs3 = 3;
-			numberOfBombs4 = 4;
-		}
-	}
+			numberOfBombs1 = 3;
+			numberOfBombs2 = 3;
+			numberOfBombs3 = 4;
+			numberOfBombs4 = 5;
+
+            bombsInOneAfter = 15;
+
+        }
+    }
 }
