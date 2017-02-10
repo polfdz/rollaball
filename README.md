@@ -2,6 +2,8 @@
 
 ## Gameplay
 
+Android store: https://play.google.com/store/apps/details?id=com.polfc.rollaball
+
 A simple "roll a ball" game made with Unity. The player controls a ball inside a platform and has to collect coins to get points as the time goes down. The goal of the game is to get as many points as possible without the timer going to zero or falling out of the platforms. The game offers some special objects to help or challenge the player.
 
 Tested on Windows, Ubuntu and Android.
